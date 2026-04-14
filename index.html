@@ -8,10 +8,14 @@
 <h1>Tippspiel-Neu</h1> 
 <label>Name:</label> 
 <input type="text" id="name"><br><br> 
-<label>Tore Team A:</label> 
+<label>Tore A:</label> 
 <input type="number" id="toreA"><br><br> 
-<label>Tore Team B:</label> 
+<label>Team A:</label> 
+<input type="text" id="teamB"><br><br> 
+<label>Tore B:</label> 
 <input type="number" id="toreB"><br><br> 
+<label>Team B:</label> 
+<input type="text" id="teamB"><br><br> 
 <button onclick="speichern()">Tipp speichern</button> 
 <button onclick="laden()">Tipps laden</button> 
 <h2>Gespeicherte Tipps</h2> 
@@ -25,6 +29,8 @@ const supabase = createClient(supabaseUrl, supabaseKey);
       const name = document.getElementById("name").value; 
       const toreA = Number(document.getElementById("toreA").value); 
       const toreB = Number(document.getElementById("toreB").value); 
+ const teamA = document.getElementById("teamA").value; 
+         const teamB = document.getElementById("teamB").value; 
  
       const { error } = await supabase 
         .from("tipps") 
@@ -32,7 +38,9 @@ const supabase = createClient(supabaseUrl, supabaseKey);
           { 
             name: name, 
             tore_a: toreA, 
-            tore_b: toreB 
+            tore_b: toreB,
+            team_a: teamA,
+            team_b: teamB
           } 
         ]); 
  
@@ -63,8 +71,8 @@ const supabase = createClient(supabaseUrl, supabaseKey);
       for (let i = 0; i < data.length; i++) { 
         let tipp = data[i]; 
         text += 
-          tipp.name + ": " + 
-          tipp.tore_a + " : " + tipp.tore_b + 
+          tipp.name + ": " + tipp.team_a +" "+
+          tipp.tore_a + " : " + tipp.tore_b + " "+ tipp.team_b +
           "<br>"; 
 } 
 document.getElementById("ausgabe").innerHTML = text; 
