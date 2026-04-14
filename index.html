@@ -18,8 +18,8 @@
 <div id="ausgabe"></div> 
 <script type="module"> 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2"; 
-const supabaseUrl = https://ufdnxhvdtqhrebqbjkum.supabase.co; 
-const supabaseKey = sb_publishable_nXaJVCfpU6CsvI-psVTiXw_eYpSIDGI; 
+const supabaseUrl = "https://ufdnxhvdtqhrebqbjkum.supabase.co"; 
+const supabaseKey = "sb_publishable_nXaJVCfpU6CsvI-psVTiXw_eYpSIDGI"; 
 const supabase = createClient(supabaseUrl, supabaseKey); 
     async function speichern() { 
       const name = document.getElementById("name").value; 
@@ -43,7 +43,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
       } 
  
       document.getElementById("ausgabe").innerHTML = "Tipp gespeichert!"; 
-      //await laden(); 
+      await laden(); 
     } 
  
     async function laden() { 
@@ -71,7 +71,7 @@ document.getElementById("ausgabe").innerHTML = text;
 } 
 window.speichern = speichern; 
 window.laden = laden; 
-//laden(); 
+laden(); 
 </script> 
 </body> 
 </html>
